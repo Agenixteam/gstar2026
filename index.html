@@ -1351,7 +1351,7 @@ document.addEventListener("click", e => { const b = e.target.closest && e.target
 try { document.documentElement.lang = lang; document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang)); } catch(e){}
 const h0 = location.hash.slice(1); if (TABS[h0]) view.tab = h0;
 
-const API = "data.json";
+const API = "https://script.google.com/macros/s/AKfycbw692ABajSRK5tNh2CZEXruD--ERfQPE7c-pgnbmEOazGMU3CfVpFMiGDC-s6XUgXGaXA/exec";
 const STATIC = /\.json(\?|$)/.test(API);
 let PIN = ""; try { PIN = localStorage.getItem("gstar_pin") || ""; } catch(e){}
 function makeSheetDb(){
