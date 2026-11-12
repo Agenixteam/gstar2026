@@ -881,7 +881,8 @@ function editor(){
   </section></div>`;
 }
 const MINS_MAX = 3000;
-const MINS_TPL = "สรุปที่คุย:\n- \n\nสิ่งที่เขาสนใจ / ข้อเสนอ:\n- \n\nต้องทำต่อ (ใคร · ทำอะไร · เมื่อไหร่):\n- ";
+const MINS_TPL_EN = "Summary:\n- \n\nTheir interests / offers:\n- \n\nNext steps (who · what · when):\n- ";
+const MINS_TPL_TH = "สรุปที่คุย:\n- \n\nสิ่งที่เขาสนใจ / ข้อเสนอ:\n- \n\nต้องทำต่อ (ใคร · ทำอะไร · เมื่อไหร่):\n- ";
 function minsBlock(e){
   const me = view.medit && view.medit.id === e.id ? view.medit : null;
   if (me) return `<div class="mins-ed"><label class="plab" for="mins-t">📋 บันทึกการประชุม</label>
@@ -894,7 +895,7 @@ function minsBlock(e){
 }
 function openMins(id){
   if (!canWrite) return; const e = sched.find(x => x.id === id); if (!e) return;
-  view.medit = {id, text: e.mins || MINS_TPL, by: e.minsBy || ME || (people[0] && people[0].id) || ""}; render();
+  view.medit = {id, text: e.mins || (lang === "en" ? MINS_TPL_EN : MINS_TPL_TH), by: e.minsBy || ME || (people[0] && people[0].id) || ""}; render();
   const t = document.getElementById("mins-t"); if (t){ t.focus(); const i = e.mins ? t.value.length : t.value.indexOf("- ") + 2; t.setSelectionRange(i, i); }
 }
 async function saveMins(id, clear){
