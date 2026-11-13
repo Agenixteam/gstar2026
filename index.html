@@ -209,7 +209,7 @@ span.wchip{cursor:default}
 .rgchip{padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--sunk)}
 .gtabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .gtab{font:inherit;cursor:pointer;text-align:left;border:2px solid var(--gc);border-radius:12px;padding:10px 14px;background:color-mix(in srgb,var(--gc) 9%,var(--surface));color:var(--ink);display:grid;gap:0}
-.gtab.g1{--gc:#0e7356} .gtab.g2{--gc:#a8570c}
+.gtab.g1{--gc:#0e7356} .gtab.g2{--gc:#a8570c} .gtab.g5{--gc:#9a6a00}
 .gtab small{font-family:var(--mono);font-size:11px;color:var(--muted)}
 .gtab span{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.25}
 .gtab em{font-style:normal;font-size:13px;color:var(--muted)}
@@ -360,7 +360,7 @@ details.more[open] summary{margin-bottom:8px}
 .rp{border-width:1px;border-color:var(--line);background:var(--sunk)}
 .rgchip{background:var(--sunk)}
 .gtab{border-width:1px;border-radius:14px;background:var(--surface)}
-.gtab.g1{--gc:#35FFFC} .gtab.g2{--gc:#FF4D8F} .gtab.g3{--gc:#B8F36B} .gtab.g4{--gc:#B69CFF}
+.gtab.g1{--gc:#35FFFC} .gtab.g2{--gc:#FF4D8F} .gtab.g3{--gc:#B8F36B} .gtab.g4{--gc:#B69CFF} .gtab.g5{--gc:#FFC24D}
 .gtab span{font-family:"IBM Plex Sans Thai",sans-serif}
 .gtab[aria-selected="true"]{background:var(--gc);color:var(--on)}
 .st-invite{--sc:#FF4D8F;--st:#08090A} .st-pending{--sc:#2A2E33;--st:#F2F4F6} .st-confirmed{--sc:#35FFFC;--st:#08090A} .st-block{--sc:#191B1E;--st:#8C9198}
@@ -410,7 +410,7 @@ details.more[open] summary{margin-bottom:8px}
 .ewho{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:3px;margin-left:auto}
 .ewho span{font-size:11.5px;font-weight:700;line-height:1.35;padding:1px 7px;border-radius:999px;background:#F2F4F6;color:#08090A;white-space:nowrap}
 .ent.st-confirmed .ewho span,.ent.st-invite .ewho span{background:#08090A;color:#F2F4F6}
-.gtabs{grid-template-columns:repeat(4,minmax(0,1fr))}
+.gtabs{grid-template-columns:repeat(5,minmax(0,1fr))}
 @media (max-width:760px){.gtabs{grid-template-columns:1fr 1fr}}
 .gtab span{font-size:18px}
 .magenda{display:none} .mcon{display:none}
@@ -805,12 +805,12 @@ function toggleObj(id, k){
   const cur = objOf(id); const next = cur.includes(k) ? cur.filter(x => x !== k) : OBJ.map(o => o.k).filter(x => x === k || cur.includes(x));
   write(id, {obj: next});
 }
-let people = (SNAP.people || [{id:"p2",name:"Win",grp:"g1"},{id:"p3",name:"Palmz",grp:"g1"},{id:"p1",name:"Lhong",grp:"g2"},{id:"p4",name:"Young Kwon",grp:"g3"},{id:"p5",name:"Sally",grp:"g4"}]).slice();
+let people = (SNAP.people || [{id:"p2",name:"Win",grp:"g1"},{id:"p3",name:"Palmz",grp:"g1"},{id:"p1",name:"Lhong",grp:"g2"},{id:"p4",name:"Young Kwon",grp:"g3"},{id:"p5",name:"Sally",grp:"g4"},{id:"p7",name:"Sangsoo",grp:"g5"}]).slice();
 let sched = (SNAP.sched || []).slice();
 let schedRef = null;
-const GRPS = ["g1", "g2", "g3", "g4"];
+const GRPS = ["g1", "g2", "g3", "g4", "g5"];
 // each schedule = a meeting type + its main person (person id, so renames follow)
-const GRP = {g1: {name: "General meetings", main: "p3"}, g2: {name: "China meetings", main: "p1"}, g3: {name: "Korea", main: "p4"}, g4: {name: "Korea", main: "p5"}};
+const GRP = {g1: {name: "General meetings", main: "p3"}, g2: {name: "China meetings", main: "p1"}, g3: {name: "Korea", main: "p4"}, g4: {name: "Korea", main: "p5"}, g5: {name: "Korea", main: "p7"}};
 const mainName = g => { const m = GRP[g] && people.find(pp => pp.id === GRP[g].main); return m ? m.name : ""; };
 const grpNum = g => "ตาราง " + (GRPS.indexOf(g) + 1);
 const grpLabel = g => GRP[g] ? GRP[g].name + (mainName(g) ? " · " + mainName(g) : "") : (g === "all" ? "ทุกตาราง" : g);
